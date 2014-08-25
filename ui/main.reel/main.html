@@ -2,21 +2,94 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Main</title>
-
+    <title>
+        Main
+    </title>
     <link rel="stylesheet" href="main.css">
-
     <script type="text/montage-serialization">
-        {
-            "owner": {
-                "properties": {
-                    "element": {"#": "main"}
-                }
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "main"}
+            }
+        },
+        "radioButtonController": {
+            "prototype": "montage/core/radio-button-controller"
+        },
+        "selection1": {
+            "prototype": "digit/ui/radio-button.reel",
+            "properties": {
+                "element": {"#": "selection1"},
+                "active": false,
+                "checked": true,
+                "enabled": true,
+                "radioButtonController": {"@": "radioButtonController"},
+                "type": "selection1"
+            }
+        },
+        "selection2": {
+            "prototype": "digit/ui/radio-button.reel",
+            "properties": {
+                "element": {"#": "selection2"},
+                "checked": false,
+                "enabled": true,
+                "radioButtonController": {"@": "radioButtonController"},
+                "type": "selection2"
+            }
+        },
+        "selection3": {
+            "prototype": "digit/ui/radio-button.reel",
+            "properties": {
+                "element": {"#": "selection3"},
+                "checked": false,
+                "enabled": true,
+                "radioButtonController": {"@": "radioButtonController"},
+                "type": "selection3"
+            }
+        },
+        "substitution": {
+            "prototype": "montage/ui/substitution.reel",
+            "properties": {
+                "element": {"#": "substitution"}
+            },
+            "bindings": {
+                "switchValue": {"<-": "@radioButtonController.selectedRadioButton.type"}
+            }
+        },
+         "converter": {
+            "prototype": "ui/converter.reel",
+            "properties": {
+                "element": {"#": "converter"}
+            }
+        },
+        "text1": {
+            "prototype": "montage/ui/text.reel",
+            "properties": {
+                "element": {"#": "text1"},
+                "value": "text1"
+            }
+        },
+        "static": {
+            "prototype": "ui/static.reel",
+            "properties": {
+                "element": {"#": "static"}
             }
         }
+    }
     </script>
 </head>
 <body>
-    <div data-montage-id="main" data-montage-skin="light" class="Main"></div>
+    <div data-montage-id="main" data-montage-skin="light" class="Main">
+        <div class="selection">
+            <input type="radio" data-montage-id="selection1"><label for="selection1">Section 1</label>
+            <input type="radio" data-montage-id="selection2"><label for="selection2">Section 2</label>
+            <input type="radio" data-montage-id="selection3"><label for="selection3">Section 3</label>
+        </div>
+        <div data-montage-id="substitution">
+            <div data-arg="selection1" data-montage-id="converter"></div>
+            <p data-arg="selection2" data-montage-id="text1"></p>
+            <p data-arg="selection3" data-montage-id="static"></p>
+        </div>
+    </div>
 </body>
 </html>

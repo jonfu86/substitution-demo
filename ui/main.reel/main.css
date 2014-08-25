@@ -1,1 +1,11 @@
 .Main {}
+.selection{ 
+    margin-top:50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    text-align:center;
+    padding:10px;
+}
+
+
